@@ -6,21 +6,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Work {
+public class Project {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
-
-    public Work(Long id, String description, String name) {
-        this.id = id;
-        this.description = description;
-        this.name = name;
-    }
-
-    public Work() {
-    }
+    private String location;
 
     public Long getId() {
         return id;
@@ -44,5 +36,23 @@ public class Work {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Project() {
+    }
+
+    public Project(Long id, String name, String description, String location) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.location = location;
     }
 }

@@ -1,0 +1,35 @@
+services:
+  materials:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:Í
+      - '9090:9090'
+    container_name: materials
+    environment:
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/build_pinas
+      SPRING_DATASOURCE_USERNAME: bp_super
+      SPRING_DATASOURCE_PASSWORD: admin
+
+  db:
+    container_name: db
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: build_pinas
+      POSTGRES_USER: bp_super
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - build_pinas_volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD', 'build_pinas' ,'ping', '-h', 'db']
+      timeout: 1s
+      retries: 100
+
+volumes:
+  build_pinas_volume:

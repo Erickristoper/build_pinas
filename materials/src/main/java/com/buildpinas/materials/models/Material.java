@@ -1,21 +1,25 @@
 package com.buildpinas.materials.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.*;
+import jakarta.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class Material {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    Long id;
-    String name;
-    String description;
-    String unitOfMeasurement;
+    private Long id;
+    private String name;
+    private String description;
+    private String unitOfMeasurement;
+
+    public Material(Long id, String name, String description, String unitOfMeasurement) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.unitOfMeasurement = unitOfMeasurement;
+    }
+
+    public Material() {
+    }
 
     public Long getId() {
         return id;

@@ -6,20 +6,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Work {
+public class Supplier {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String description;
+    private String contactInfo;
 
-    public Work(Long id, String description, String name) {
+    public Supplier(Long id, String name, String contactInfo) {
         this.id = id;
-        this.description = description;
         this.name = name;
+        this.contactInfo = contactInfo;
     }
 
-    public Work() {
+    public Supplier() {
     }
 
     public Long getId() {
@@ -38,11 +39,11 @@ public class Work {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getContactInfo() {
+        return contactInfo;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
     }
 }

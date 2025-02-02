@@ -1,9 +1,20 @@
 services:
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+  projects:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - '5432'
+      - '9091:9091'
+    container_name: projects
+    environment:
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      SPRING_DATASOURCE_URL: jdbc:postgresql://project_db:5432/project_db
+      SPRING_DATASOURCE_USERNAME: bp_super
+      SPRING_DATASOURCE_PASSWORD: admin
+    networks:
+      - build_pinas_network
+
+networks:
+  build_pinas_network:
+    external: true
+

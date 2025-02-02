@@ -14,6 +14,16 @@ public class Project {
     private String description;
     private String location;
 
+    public Project() {
+    }
+
+    public Project(Long id, String name, String description, String location) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.location = location;
+    }
+
     public Long getId() {
         return id;
     }
@@ -46,13 +56,4 @@ public class Project {
         this.location = location;
     }
 
-    public Project() {
-    }
-
-    public Project(Long id, String name, String description, String location) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.location = location;
-    }
 }

@@ -1,35 +1,65 @@
 services:
   materials:
     depends_on:
-      - db
+      - material_db
     build:
       context: .
       dockerfile: Dockerfile
-    ports:Í
+    ports:
       - '9090:9090'
     container_name: materials
     environment:
-      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/build_pinas
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      SPRING_DATASOURCE_URL: jdbc:postgresql://material_db:5432/material_db
       SPRING_DATASOURCE_USERNAME: bp_super
       SPRING_DATASOURCE_PASSWORD: admin
+    networks:
+      - build_pinas_network
 
-  db:
-    container_name: db
+  material_db:
+    container_name: material_db
     image: postgres:latest
     restart: always
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: build_pinas
+      POSTGRES_DB: material_db
       POSTGRES_USER: bp_super
       POSTGRES_PASSWORD: admin
     volumes:
-      - build_pinas_volume:/var/lib/postgresql/data
+      - material_vol:/var/lib/postgresql/data
     healthcheck:
       test: ['CMD', 'build_pinas' ,'ping', '-h', 'db']
       timeout: 1s
       retries: 100
+    networks:
+      - build_pinas_network
+
+  project_db:
+    container_name: project_db
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: project_db
+      POSTGRES_USER: bp_super
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - project_vol:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD', 'build_pinas' ,'ping', '-h', 'db']
+      timeout: 1s
+      retries: 100
+    networks:
+      - build_pinas_network
 
 volumes:
-  build_pinas_volume:
+  {
+    material_vol, project_vol
+  }
+
+networks:
+  build_pinas_network:
+    external: true
+

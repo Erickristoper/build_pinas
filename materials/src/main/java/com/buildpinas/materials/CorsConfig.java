@@ -12,7 +12,7 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/api/v1/**")
                 .allowedOrigins("http://localhost:3000",
                         "http://10.222.124.103:3000",
-                        "http://10.222.124.94:3000") // Allow requests from React app
+                        "http://10.222.125.181:3000") // Allow requests from React app
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true);

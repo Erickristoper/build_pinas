@@ -10,6 +10,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+    private Long projectOwner;
     private String name;
     private String description;
     private String location;
@@ -22,6 +23,15 @@ public class Project {
         this.name = name;
         this.description = description;
         this.location = location;
+        // this.owner = owner;
+    }
+
+    public Long getProjectOwner() {
+        return projectOwner;
+    }
+
+    public void setProjectOwner(Long projectOwner) {
+        this.projectOwner = projectOwner;
     }
 
     public Long getId() {

@@ -1,0 +1,51 @@
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.left-panel {
+  width: 25%;
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+.right-panel {
+  width: 75%;
+  padding: 10px;
+}
+
+.project-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-list li {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.project-list li:hover {
+  background-color: #ddd;
+}
+
+.project-details input,
+.project-details textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.material-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.material-table th,
+.material-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.material-table th {
+  background-color: #f4f4f4;
+}

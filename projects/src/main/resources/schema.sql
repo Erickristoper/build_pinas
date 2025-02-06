@@ -1,7 +1,7 @@
-INSERT INTO project (id, name, description, location) VALUES
-(1,	'Office Fit-out',	'Fit-out of a 5,000 sqft office space in Makati CBD',	'123 Yakal St, Makati City, PH 10001'),
-(2,	'Restaurant Renovation',	'Renovation of a 3,000 sqft restaurant space in uptown mall',	'456 Dela Rosa, Mandaluyong City, TG 10013'),
-(3,	'Condo Unit Renovation for Airbnb',	'Renovation of a 1-bedroom condo unit in a high-rise building to create a luxurious and modern space for Airbnb rental',	'789 High Street, Bonifacio Global City, PH 33139');
+INSERT INTO project (id, project_owner, name, description, location) VALUES
+(1,	202, 'Office Fit-out',	'Fit-out of a 5,000 sqft office space in Makati CBD',	'123 Yakal St, Makati City, PH 10001'),
+(2,	202, 'Restaurant Renovation',	'Renovation of a 3,000 sqft restaurant space in uptown mall',	'456 Dela Rosa, Mandaluyong City, TG 10013'),
+(3,	202, 'Condo Unit Renovation for Airbnb',	'Renovation of a 1-bedroom condo unit in a high-rise building to create a luxurious and modern space for Airbnb rental',	'789 High Street, Bonifacio Global City, PH 33139');
 
 
 INSERT INTO project_material (id, project_id, work_id, material_id, quantity, cost) VALUES

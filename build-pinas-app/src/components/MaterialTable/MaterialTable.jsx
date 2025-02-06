@@ -18,7 +18,7 @@ const MaterialTable = ({ materials }) => {
             <tr key={material.id}>
               <td>{material.name}</td>
               <td>{material.quantity}</td>
-              <td>{material.unit}</td>
+              <td>{material.unitOfMeasurement}</td>
             </tr>
           ))}
         </tbody>

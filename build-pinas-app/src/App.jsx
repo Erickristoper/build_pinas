@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { getProjects, getMaterials } from './services/projectService';
+import { getProjects, getMaterialsGroupedByWork } from './services/projectService';
 import ProjectList from './components/ProjectList/ProjectList';
 import AddProjectButton from './components/AddProjectButton/AddProjectButton';
 import ProjectDetails from './components/ProjectDetails/ProjectDetails';
-import MaterialTable from './components/MaterialTable/MaterialTable';
+import WorksComponent from './components/WorksComponent/WorksComponent';
 import './App.css';
 
 const App = () => {
   const [userId] = useState(202); // Hardcoded for now
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [materials, setMaterials] = useState([]);
+  const [works, setWorks] = useState([]);
 
   useEffect(() => {
     const loadProjects = async () => {
@@ -22,11 +22,11 @@ const App = () => {
 
   useEffect(() => {
     if (selectedProject) {
-      const loadMaterials = async () => {
-        const data = await getMaterials(selectedProject);
-        setMaterials(data);
+      const loadWorks = async () => {
+        const data = await getMaterialsGroupedByWork(selectedProject);
+        setWorks(data);
       };
-      loadMaterials();
+      loadWorks();
     }
   }, [selectedProject]);
 
@@ -43,7 +43,7 @@ const App = () => {
       </div>
       <div className="right-panel">
         <ProjectDetails project={projects.find((p) => p.id === selectedProject)} />
-        <MaterialTable materials={materials} />
+        <WorksComponent works={works} />
       </div>
     </div>
   );

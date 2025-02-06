@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProjectDetails.css';
 
 const ProjectDetails = ({ project }) => {
-  const [name, setName] = useState(project.name || '');
-  const [location, setLocation] = useState(project?.location || '');
-  const [description, setDescription] = useState(project?.description || '');
+  // Initialize state with default values
+  const [name, setName] = useState('');
+  const [location, setLocation] = useState('');
+  const [description, setDescription] = useState('');
 
+  // Update state when the `project` prop changes
+  useEffect(() => {
+    if (project) {
+      setName(project.name || '');
+      setLocation(project.location || '');
+      setDescription(project.description || '');
+    }
+  }, [project]);
   return (
     <div className="project-details">
       <h3>Project Details</h3>

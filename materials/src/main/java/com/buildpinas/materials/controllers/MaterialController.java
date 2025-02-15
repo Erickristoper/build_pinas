@@ -22,6 +22,7 @@ public class MaterialController {
 
         System.out.println("testing");
         System.out.println("testing");
+        System.out.println("testing");
         return materialRepo.findAll();
     }
     @GetMapping("/{id}")

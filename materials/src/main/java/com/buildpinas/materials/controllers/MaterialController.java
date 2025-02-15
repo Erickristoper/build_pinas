@@ -19,6 +19,8 @@ public class MaterialController {
 
     @GetMapping
     public List<Material> getMaterials(){
+
+        System.out.println("testing");
         return materialRepo.findAll();
     }
     @GetMapping("/{id}")
